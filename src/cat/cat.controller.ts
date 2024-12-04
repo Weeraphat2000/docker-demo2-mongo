@@ -8,7 +8,8 @@ import { De } from 'src/schemas/d.schema';
 @Controller('cat')
 export class CatController {
   constructor(
-    @InjectModel(Cat.name) private readonly catModel: Model<Cat>,
+    // Cat ตรงนี้ต้องตรงกับชื่อที่เราใช้ใน forFeature ใน cat.module.ts ตรง name: 'Cat'
+    @InjectModel('Cat') private readonly catModel: Model<Cat>,
     @InjectModel(De.name) private readonly dModel: Model<De>,
   ) {}
 
