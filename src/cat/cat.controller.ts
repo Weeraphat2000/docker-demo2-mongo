@@ -3,7 +3,7 @@ import { Controller, Get, Post, Body } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Cat } from 'src/schemas/cat.schema';
 import { Model } from 'mongoose';
-import { D, De } from 'src/schemas/d.schema';
+import { De } from 'src/schemas/d.schema';
 
 @Controller('cat')
 export class CatController {
@@ -26,7 +26,7 @@ export class CatController {
   }
 
   @Post('d')
-  createD(@Body() d: D) {
+  createD(@Body() d: De) {
     console.log('createD');
     const createCate = new this.dModel(d);
     return createCate.save();
