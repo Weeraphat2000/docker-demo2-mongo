@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param } from '@nestjs/common';
 
 import { InjectModel } from '@nestjs/mongoose';
 import { Cat } from 'src/schemas/cat.schema';
@@ -31,6 +31,14 @@ export class CatController {
     console.log('createD');
     const createCate = new this.dModel(d);
     return createCate.save();
+  }
+
+  @Get('d/:id')
+  findD(@Param('id') id: string) {
+    console.log(id, 'name');
+    console.log(process.env.MONGO_URI);
+    console.log('find all d');
+    return this.dModel.findById(id);
   }
 
   @Get('d')
