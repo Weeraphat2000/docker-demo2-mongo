@@ -45,6 +45,8 @@ export class CatController {
   findAllD() {
     console.log(process.env.MONGO_URI);
     console.log('find all d');
-    return this.dModel.find();
+    return this.dModel.find({
+      name: { $regex: '5', $options: 'i' }, // "i" หมายถึง case-insensitive
+    });
   }
 }
