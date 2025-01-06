@@ -4,6 +4,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Cat } from 'src/schemas/cat.schema';
 import { Model } from 'mongoose';
 import { De } from 'src/schemas/d.schema';
+import { ApiOperation } from '@nestjs/swagger';
 
 @Controller('cat')
 export class CatController {
@@ -14,6 +15,10 @@ export class CatController {
   ) {}
 
   @Post()
+  @ApiOperation({
+    summary: 'Create cat',
+    description: 'Create cat',
+  })
   create(@Body() createCatDto: Cat) {
     console.log('create');
     const createCate = new this.catModel(createCatDto);
@@ -21,12 +26,20 @@ export class CatController {
   }
 
   @Get()
+  @ApiOperation({
+    summary: 'Find all cat',
+    description: 'Find all cat',
+  })
   findAll() {
     console.log('find all');
     return this.catModel.find();
   }
 
   @Post('d')
+  @ApiOperation({
+    summary: 'Create d',
+    description: 'Create d',
+  })
   createD(@Body() d: De) {
     console.log('createD');
     const createCate = new this.dModel(d);
@@ -34,6 +47,10 @@ export class CatController {
   }
 
   @Get('d/:id')
+  @ApiOperation({
+    summary: 'Find d',
+    description: 'Find d',
+  })
   findD(@Param('id') id: string) {
     console.log(id, 'name');
     console.log(process.env.MONGO_URI);
@@ -42,6 +59,10 @@ export class CatController {
   }
 
   @Get('d')
+  @ApiOperation({
+    summary: 'Find all d',
+    description: 'Find all d',
+  })
   findAllD() {
     console.log(process.env.MONGO_URI);
     console.log('find all d');
