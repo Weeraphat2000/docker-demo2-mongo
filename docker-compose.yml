@@ -3,7 +3,7 @@ version: '3.1'
 services:
   docker-demo2:
     container_name: dockerDemo2
-    build: .
+    build: . # Build the image from the Dockerfile in the current directory
     ports:
       - '8010:8009'
     environment:
