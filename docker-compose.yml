@@ -2,6 +2,7 @@ version: '3.1'
 
 services:
   docker-demo2:
+    image: weeraphat01/docker-demo2 # docker pull weeraphat01/docker-demo2 เพื่อ push ไปที่ docker hub
     container_name: dockerDemo2
     build: . # Build the image from the Dockerfile in the current directory
     ports:
